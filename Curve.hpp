@@ -11,23 +11,13 @@ struct Vector{
 };
 
 class Curve{
-	private:
-		
+	protected:
+		double t;
 	
 	public: 
-		Curve(){}
 	
-	/*	Curve(double a, double b, double c){
-			this.a = a;
-			this.b = b;
-			this.c = c;
-		}
-		*/
-		Curve(double x1, double y1, double x2, double y2, double x3, double y3) = 0;
+		Curve(Point p1, Point p2, Point p3) = 0;
 		
-//		virtual void parametricForm() = 0;
-		
-	//	virtual Point 
 		virtual double getX(double t) = 0;
 		
 		virtual double getY(double t) = 0;
