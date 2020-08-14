@@ -5,15 +5,13 @@ struct Point{
 	double y;		
 };
 
-struct Vector{
-	double a;
-	double b;
-};
 
 class Curve{
 	protected:
 		double t;
-	
+		double x0;
+		double y0;
+		
 	public: 
 	
 		Curve(Point p1, Point p2, Point p3) = 0;
@@ -24,7 +22,7 @@ class Curve{
 		
 		virtual bool isClosed() = 0;
 		
-		virtual Vector tangentVector(double t) = 0;
+		virtual vector<double > tangentVector(double t) = 0;
 		
 		
 		
