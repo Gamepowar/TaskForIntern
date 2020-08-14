@@ -1,3 +1,5 @@
+#include <iostream>
+
 class Point{
 	private :
 		double x;
@@ -7,8 +9,8 @@ class Point{
 		Point(){}
 		
 		Point(double x, double y){
-			this.x = x;
-			this.y = y;
+			this->x = x;
+			this->y = y;
 		}
 		
 		void show(){
@@ -16,8 +18,8 @@ class Point{
 		}
 		
 		setCoordinates (double x, double y){
-			this.x = x;
-			this.y = y;
+			this->x = x;
+			this->y = y;
 		}
 		
 };

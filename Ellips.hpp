@@ -1,8 +1,11 @@
-#include "Curve.h"
+#include "circle.h"
 #include <cmart>
 #include <vector>
-class Ellips : Curve {
-	
+class Ellips : Circle {
+	protected:
+		
+		double a;
+		double b;
 	
 	public:
 		
@@ -14,14 +17,10 @@ class Ellips : Curve {
 			return b * r * sin(t) + y0;
 		}
 		
-		bool isClosed(){
-			return true;
-		}
-		
-		vector<double > tangentVector(double t){
-			vector<double > straight;
-			straight.push_back(-(cos(t) * b )/ (sin(t) * a));
-			straight.push_back(r * b / sin(t));
-			return straight;
+		vector<Point > tangentVector(double t){
+			vector<Point > vctr;
+			vctr.push_back(Point(getX(t), getY(t)));
+			vctr.push_back(Point(getX(t) + 1, (-(b * cos(t) / a) * (getX(t) + 1) + r * b) / sin(t)));
+			return vctr;
 		}
 };

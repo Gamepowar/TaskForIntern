@@ -1,9 +1,10 @@
-#include "Point.hpp"
-
+#include "point.hpp"
+#include <vector>
+/*
 struct Point{
 	double x;
 	double y;		
-};
+};*/
 
 
 class Curve{
@@ -14,7 +15,7 @@ class Curve{
 		
 	public: 
 	
-		Curve(Point p1, Point p2, Point p3) = 0;
+		Curve(Point p1, Point p2, Point p3);
 		
 		virtual double getX(double t) = 0;
 		
@@ -22,8 +23,8 @@ class Curve{
 		
 		virtual bool isClosed() = 0;
 		
-		virtual vector<double > tangentVector(double t) = 0;
+		virtual std::vector<Point > tangentVector(double t) = 0;
 		
-		
+		virtual ~Curve() = 0;
 		
 };
