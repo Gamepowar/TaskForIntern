@@ -1,11 +1,10 @@
 #include <iostream>
 
 class Point{
-	private :
+	public:
 		double x;
 		double y;
 	
-	public:
 		Point(){}
 		
 		Point(double x, double y){
@@ -17,7 +16,7 @@ class Point{
 			std:: cout << "x = " << x << ", y = " << y << std:: endl; 
 		}
 		
-		setCoordinates (double x, double y){
+		void setCoordinates (double x, double y){
 			this->x = x;
 			this->y = y;
 		}

@@ -1,13 +1,12 @@
 #include "curve.hpp"
 #include <vector>
 #include <cmath>
-class Circle : Curve{
+class Circle : public Curve{
 	protected:
-		
 		double r;
 	
+		Circle(){}
 	public:
-	
 	
 		Circle(Point p1, Point p2, Point p3){
 			double ma = (p2.y - p1.y) / (p2.x - p1.x);
@@ -31,11 +30,12 @@ class Circle : Curve{
 			return true;
 		}
 		
-		std::vector<Point > tangentVector(double t){
-	/*		std::vector<Point > vctr;
+		std::vector<Point> tangentVector(double t){
+			std::vector<Point> vctr;
 			double x = getX(t);
+			double y = getY(t);
 			vctr.push_back(Point(x, getY(t)));
-			vctr.push_back(Point(x + 1, (-(b * cos(t) / a) * (x + 1) + r * b) / sin(t)));
-			return vctr;*/
+			vctr.push_back(Point(x + 1, -((x + 1 - x0) * x + (-x0 * x - y0 * y + x0 * x0 + y0 * y0 - r * r))/ y0 + y));
+			return vctr;
 		}
 };

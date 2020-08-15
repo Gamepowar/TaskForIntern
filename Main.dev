@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=5
+UnitCount=6
 
 [VersionInfo]
 Major=1
@@ -81,7 +81,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit4]
-FileName=ellips.hpp
+FileName=ellipse.hpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -92,6 +92,16 @@ BuildCmd=
 
 [Unit5]
 FileName=circle.hpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit6]
+FileName=parabola.hpp
 CompileCpp=1
 Folder=
 Compile=1
