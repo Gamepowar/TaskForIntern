@@ -75,13 +75,12 @@ class Circle : public Curve{
 			p.push_back(p1);
 			p.push_back(p2);
 			p.push_back(p3);
-			for(int i = 0, j = 1; i < p.size(); i++, j++){
-				if(j == p.size()) j = 0;
-				temp.push_back(p[j].x );
+			for(int i = 0; i < p.size(); i++){
+				temp.push_back(p[i].x );
 				temp.push_back(p[i].y);
 			//	temp.push_back(-p[i].x * p[i].x -p[i].y * p[i].y + p[j].x * p[j].x + p[j].x * p[j].x);
 				temp.push_back(1);
-				temp.push_back(p[j].x * p[j].x + p[i].y * p[i].y);
+				temp.push_back(p[i].x * p[i].x + p[i].y * p[i].y);
 				equation.push_back(temp);
 				temp.clear();
 			}

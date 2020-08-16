@@ -1,7 +1,7 @@
 #include "circle.hpp"
 #include <cmath>
 #include <vector>
-class Ellipse : public Circle {
+class myEllipse : public Circle {
 	protected:
 		
 		double a;
@@ -25,7 +25,7 @@ class Ellipse : public Circle {
 			return vctr;
 		}
 		
-		Ellipse(Point p1, Point p2, Point p3){
+		myEllipse(Point p1, Point p2, Point p3){
 			std::cout << "Choose how you want to build the ellipse:\n1) Three points with center at point (0, 0);\n2) By three points with an offset (you will need to enter 2 more points);\n";
 			int choice;
 			std::cin >> choice;
@@ -46,7 +46,21 @@ class Ellipse : public Circle {
 					equation.push_back(temp);
 					temp.clear();
 				}
-				
+				Soleq soleq(equation);
+				Soleq::Answer answer = soleq.solve();
+				std::vector<std::vector<double>> & a = answer.general_solution;
+				bool isOneEq = true;
+				for (int i = 0; i < a.size(); i++){
+					for(int j = 0; j <a[i].size(); j++){
+						if(a[i][j] != 0 && j != a[i].size() - 1) isOneEq = false;
+					}
+				}
+				if(!isOneEq){
+					throw std::invalid_argument("\nWrong data\n");
+				}
+				this->a = 1/a[0][a[0].size()-1];
+				this->b = 1/a[1][a[0].size() - 1];
+				this->r = a[2][a[0].size() - 1];
 			} 
 		}
 };
