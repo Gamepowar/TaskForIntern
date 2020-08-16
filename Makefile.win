@@ -4,14 +4,14 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o soleq.o
-LINKOBJ  = main.o soleq.o
+OBJ      = main.o soleq.o curve.o point.o ellipse.o parabola.o circle.o
+LINKOBJ  = main.o soleq.o curve.o point.o ellipse.o parabola.o circle.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib"
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = Main.exe
-CXXFLAGS = $(CXXINCS) -std=c++11
-CFLAGS   = $(INCS) -std=c++11
+CXXFLAGS = $(CXXINCS) -Wall -std=c++11
+CFLAGS   = $(INCS) -Wall -std=c++11
 RM       = rm.exe -f
 
 .PHONY: all all-before all-after clean clean-custom
@@ -29,3 +29,18 @@ main.o: main.cpp
 
 soleq.o: soleq.cpp
 	$(CPP) -c soleq.cpp -o soleq.o $(CXXFLAGS)
+
+curve.o: curve.cpp
+	$(CPP) -c curve.cpp -o curve.o $(CXXFLAGS)
+
+point.o: point.cpp
+	$(CPP) -c point.cpp -o point.o $(CXXFLAGS)
+
+ellipse.o: ellipse.cpp
+	$(CPP) -c ellipse.cpp -o ellipse.o $(CXXFLAGS)
+
+parabola.o: parabola.cpp
+	$(CPP) -c parabola.cpp -o parabola.o $(CXXFLAGS)
+
+circle.o: circle.cpp
+	$(CPP) -c circle.cpp -o circle.o $(CXXFLAGS)

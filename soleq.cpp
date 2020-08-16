@@ -1,4 +1,4 @@
-#include "soleq.h"
+#include "soleq.hpp"
 #include <cassert>
 #include <unordered_set>
 #include <cmath>
