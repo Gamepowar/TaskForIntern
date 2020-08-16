@@ -89,8 +89,8 @@ class Parabola : public Curve{
 			std::vector<Point > vctr;
 			double x = getX(t);
 			double y = getY(t);
-	//		vctr.push_back(Point(x, getY(t)));
-	//		vctr.push_back(Point(x + 1, -((x + 1 - x0) * x + (-x0 * x - y0 * y + x0 * x0 + y0 * y0 - r * r))/ y0 + y));
+			vctr.push_back(Point(x, y));
+			vctr.push_back(Point(x + 1, (x / p - x0 / p)(x + 1) + x0 * x0(2 * p)));
 			return vctr;
 		}
 };

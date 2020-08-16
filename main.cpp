@@ -12,9 +12,9 @@ int main(int argc, char** argv) {/*
 	RECT window = {}; //Переменная window будет использована для получения ширины и высоты окна
 	HBRUSH brush; //Переменная brush - это кисть, она будет использоваться для закрашивания
  	*/
- 	Point p1(300, 250); 
+ 	Point p1(-10, 0); 
 	Point p2(0, 10); 
-	Point p3(20, 0);
+	Point p3(10, 230);
 	p1.show();
 	p2.show();
 	p3.show();
