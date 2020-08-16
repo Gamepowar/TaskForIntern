@@ -3,7 +3,7 @@
 #include <vector>
 #include <stdexcept>
 
-double const eps  =0.0001;
+//double const eps  = 0.000001;
 
 class Soleq { // System Of Linear EQuation
 public:
