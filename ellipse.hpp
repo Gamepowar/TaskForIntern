@@ -32,8 +32,20 @@ class Ellipse : public Circle {
 			if(choice == 1){
 				x0 = 0;
 				y0 = 0;
-				vector<vector<double>> equation;
-				vector<double> temp;
+				std::vector<std::vector<double>> equation;
+				std::vector<double> temp;
+				std::vector<Point> p;
+				p.push_back(p1);
+				p.push_back(p2);
+				p.push_back(p3);
+				for(int i = 0; i < p.size(); i++){
+					temp.push_back((p[i].x + x0) * (p[i].x + x0));
+					temp.push_back((p[i].y + y0) * (p[i].y + y0));
+					temp.push_back(-1);
+					temp.push_back(0);
+					equation.push_back(temp);
+					temp.clear();
+				}
 				
 			} 
 		}

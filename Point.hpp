@@ -20,5 +20,9 @@ class Point{
 			this->x = x;
 			this->y = y;
 		}
-		
+		void swap(Point& p){
+			Point temp(p.x, p.y);
+			p.setCoordinates(this->x, this->y);
+			this->setCoordinates(temp.x, temp.y);
+		}
 };

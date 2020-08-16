@@ -36,6 +36,10 @@ vector<vector<double > > my::gauss(vector<vector<double > > x){
 			}
 		}
 	}
+	if()
+	for (int i = x.size()) - 1; i > 0; i--){
+		
+	}
 	for(int i = 0; i < x.size(); i++){
 		for(int j = 0; j < x[i].size(); j++){
 			cout << x[i][j] << "\t";
