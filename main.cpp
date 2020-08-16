@@ -1,7 +1,7 @@
 #include <iostream>
 #include <Windows.h>
 #include "ellipse.hpp"
-//#include "parabola.hpp"
+#include "parabola.hpp"
 int main(int argc, char** argv) {/*
 	Ellipse ellipse(Point(12, 4), Point(6, 3), Point(-3, 1));
 	return 0;*/

@@ -7,6 +7,10 @@ class myEllipse : public Circle {
 		double a;
 		double b;
 	
+		double tangentEquation(double x){
+			return (-(b * cos(t) / a) * x + r * b) / sin(t);
+		}
+	
 	public:
 		
 		double getX(double t){
@@ -17,21 +21,12 @@ class myEllipse : public Circle {
 			return b * r * sin(t) + y0;
 		}
 		
-		std::vector<Point > tangentVector(double t){
-			std::vector<Point> vctr;
-			double x = getX(t);
-			vctr.push_back(Point(x, getY(t)));
-			vctr.push_back(Point(x + 1, (-(b * cos(t) / a) * (x + 1) + r * b) / sin(t)));
-			return vctr;
-		}
 		
 		myEllipse(Point p1, Point p2, Point p3){
 			std::cout << "Choose how you want to build the ellipse:\n1) Three points with center at point (0, 0);\n2) By three points with an offset (you will need to enter 2 more points);\n";
 			int choice;
 			std::cin >> choice;
 			if(choice == 1){
-				
-				std:: cout << "test\n";
 				x0 = 0;
 				y0 = 0;
 				std::vector<std::vector<double>> equation;
@@ -76,42 +71,43 @@ class myEllipse : public Circle {
 			}
 			else if(choice == 2){
 				std::vector<std::vector<double>> equation;
-				std::vector<double> temp;
-				std::vector<Point> p;
-				p.push_back(p1);
+			//	std::vector<double> temp;
+				std::vector<Point> points({p1, p2, p3});
+			/*	p.push_back(p1);
 				p.push_back(p2);
-				p.push_back(p3);
+				p.push_back(p3);*/
 				for(int i = 0; i < p.size(); i++){
-					temp.push_back(1);
+					equation.push_back(std::vector<double>({1, p[i].x, p[i].y, p[i].x) * (p[i].x, p[i].y) * (p[i].y, 0})); 
+				/*	temp.push_back(1);
 					temp.push_back((p[i].x));
 					temp.push_back((p[i].y));
 					temp.push_back((p[i].x) * (p[i].x));
 					temp.push_back((p[i].y) * (p[i].y));
 					temp.push_back(0);
 					equation.push_back(temp);
-					temp.clear();
+					temp.clear();*/
 				}
-				temp = std::vector<double> (6,0);
+				std::vector<double> temp(6,0);
 				equation.push_back(temp);
 				equation.push_back(temp);
-				
+			/*	
 				for (int i = 0; i < equation.size(); i++){
 					for(int j = 0; j <equation[i].size(); j++){
 						std::cout << equation[i][j] << "\t";
 					}
 					std::cout << "\n";
 				}
-				std::cout << "\n\n";
+				std::cout << "\n\n";*/
 				Soleq soleq(equation);
 				Soleq::Answer answer = soleq.solve();
 				std::vector<std::vector<double>> & a = answer.general_solution;
-				for (int i = 0; i < a.size(); i++){
+			/*	for (int i = 0; i < a.size(); i++){
 					for(int j = 0; j <a[i].size(); j++){
 					//	if(a[i][j] != 0 && j != a[i].size() - 1) isOneEq = false;
 						std::cout << a[i][j] << "\t";
 					}
 					std::cout << "\n";
-				}
+				}*/
 				std::cout << "Enter variable a (from ellipse equation) : ";
 				std::cin >> this->a;
 				std::cout << "Enter variable b (from ellipse equation) : ";
