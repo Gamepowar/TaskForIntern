@@ -7,7 +7,7 @@
 using namespace std;/*
 void printExtendedMatrix(vector< vector<double> > a);
 void printAnswer(Soleq::Answer answer);*/
-
+const double eps = 0.00001;
 namespace {
 
 	vector<double> operator-(vector<double>a, vector<double>b) {

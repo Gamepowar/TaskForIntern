@@ -19,6 +19,7 @@ class Parabola : public Curve{
 			p.push_back(p1);
 			p.push_back(p2);
 			p.push_back(p3);
+			
 			for(int i = 0; i < p.size(); i++){
 				if(vertical){
 					temp.push_back(p[i].x * p[i].x);

@@ -1,21 +1,24 @@
 #include <iostream>
 #include <Windows.h>
 #include "ellipse.hpp"
-#include "parabola.hpp"
+//#include "parabola.hpp"
 int main(int argc, char** argv) {/*
 	Ellipse ellipse(Point(12, 4), Point(6, 3), Point(-3, 1));
 	return 0;*/
 	
-	
+/*	
 	HWND hwnd = GetConsoleWindow(); //Берём ориентир на консольное окно (В нём будем рисовать)
 	HDC dc = GetDC(hwnd); //Цепляемся к консольному окну
 	RECT window = {}; //Переменная window будет использована для получения ширины и высоты окна
 	HBRUSH brush; //Переменная brush - это кисть, она будет использоваться для закрашивания
- 	
- 	Point p1(350, 250); 
-	Point p2(300, 300); 
-	Point p3(250, 300);
- //	Circle circle(p1,p2,p3);
+ 	*/
+ 	Point p1(300, 250); 
+	Point p2(0, 10); 
+	Point p3(20, 0);
+	p1.show();
+	p2.show();
+	p3.show();
+ //	Circle (p1,p2,p3);
  	myEllipse ellipse1(p1,p2,p3);
  //	Parabola parabola(p1,p2,p3, false);
  	std::cout << "x0 = " << ellipse1.getX0() << ", y0 = " << ellipse1.getY0() << ", R = " << ellipse1.getR() << std::endl;
@@ -23,7 +26,7 @@ int main(int argc, char** argv) {/*
     int R = 1; //Радиус определяет размер
     int dx1=0, dy1=0, dx2=4, dy2=4;  //Если dx2 == dy2, то круг, иначе эллипс
     int X = ellipse1.getX0(), Y = ellipse1.getY0(); //Начальные координаты
-    Ellipse(dc, X+dx1, Y+dy1, X+dx2+R, Y+dy2+R);
+  /*  Ellipse(dc, X+dx1, Y+dy1, X+dx2+R, Y+dy2+R);
     brush = CreateSolidBrush(RGB(255,0,0));
     for(double i = 0; i < 10; i+=0.1){
         X = (int)ellipse1.getX(i);
@@ -53,7 +56,7 @@ int main(int argc, char** argv) {/*
 	ReleaseDC(hwnd, dc); //Освобождаем общий или оконный (не влияющий на класс или локальность) контекст устpойства, делая его доступным для дpугих пpикладных задач.
  
  
-	std::cin.get();
+	std::cin.get();*/
 	
 }
 
