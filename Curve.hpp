@@ -30,6 +30,8 @@ public:
 	
 	virtual bool isClosed() const = 0;
 	
+	virtual void showInfo() const = 0;
+	
 	virtual std::vector<Point> tangentVector(double t) const = 0;
 	
 	virtual ~Curve() {}		

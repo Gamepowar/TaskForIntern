@@ -71,6 +71,36 @@ namespace {
 			a[i].resize(a[i].size() - 1);
 		}
 	}
+	
+	void printExtendedMatrix(vector< vector<double> > a) {
+	    for (int i = 0; i< a.size(); i++) {
+		for (int j = 0; j < a[i].size(); j++) {
+   	    	printf("%8.6g ", a[i][j]);
+   	        	if (j == a[i].size() - 2) {
+   	            	printf("%8c", '|');
+   	        	}
+   	    	}
+   	    	cout << endl;
+   		}
+   		cout << endl;
+	}
+
+	void printAnswer(Soleq::Answer answer) {
+		vector<vector<double>> & a = answer.general_solution;
+		char root = 'a';
+		for (int i = 0; i< a.size(); i++, root++) {
+   	    	char temp = 'a';
+			printf("%6c%6c", root, '=');
+			for (int j = 0; j + 1 < a[i].size(); j++) {
+            	printf("%8.6g%c%6c", a[i][j], temp++, '+');
+	        }
+	        if (a[i].size() != 0) {
+	        	printf("%8.6g\n", a[i][a[i].size() - 1]);
+			}
+	        cout << endl;
+	    }
+	    cout << endl;
+	}
 }
 
 
@@ -91,7 +121,7 @@ Soleq::Answer Soleq::solve() {
 	auto acopy = this->ext_matrix;
 	
 	auto & a = this->ext_matrix;
-	
+	//printExtendedMatrix(a);
 	std::unordered_set<int> freeUnknownRowIndeces;
 	for (int i = 0; i < a.size() - 1; i++) {
 		if (isFreeUnknownInExtendedMatrix(a, i)) {
@@ -99,8 +129,6 @@ Soleq::Answer Soleq::solve() {
 			eraseRowFromExtendedMatrix(a, i);
 		}
 	}
-//	printf("Delete AllZerosRow\n");
-//	printExtendedMatrix(a);
 	
     for (int i=0; i<a.size(); i++) {
         // Search for maximum in this column
@@ -244,6 +272,8 @@ Soleq::Answer Soleq::solve() {
         }
     }
     
+    
+    
     if (!freeUnknownRowIndeces.empty()) {
     	vector<vector<double>> fullAnswer(a.size() + freeUnknownRowIndeces.size());
     	for (int i = 0, j = 0; i < fullAnswer.size(); i++) {
@@ -259,9 +289,11 @@ Soleq::Answer Soleq::solve() {
     			fullAnswer.at(i) = temp;
 			}
 		}
+		//printAnswer(Answer(fullAnswer));
 		return Answer(fullAnswer);
 	}
     else {
+    	//printAnswer(x);
     	return Answer(x);
 	}
 }

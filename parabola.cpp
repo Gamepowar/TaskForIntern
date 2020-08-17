@@ -1,12 +1,22 @@
 #include "soleq.hpp"
 #include "parabola.hpp"
 
+void Parabola::showInfo() const {
+	std::cout << "Parabola Info:\n";
+	std::cout << "p (focal parameter) = " << p << "\n";
+	std::cout << "x0 = " << x0 << "\n";
+	std::cout << "y0 = " << y0 << "\n";
+	std::cout << "Parabola is " << (vertical ? "vertical" : "horizontal") << std::endl;
+	std::cout << std::endl;
+}
+
 Parabola::Parabola(const Point & p1, const Point & p2, const Point & p3, bool vertical){
+	std::cout << "Creating " << (vertical ? "verical" : "horizontal") << " parabola\n";
 	try {
 		setPoint(p1, p2, p3);
 	}
 	catch (std::exception & e) {
-		std::cout << "Can't create parabola, since the points are collinear";
+		std::cout << "Can't create parabola, since the points are collinear\n\n";
 		throw e;
 	}
 	this->vertical = vertical; 
@@ -34,6 +44,7 @@ Parabola::Parabola(const Point & p1, const Point & p2, const Point & p3, bool ve
 		a1 = a[0][a[0].size()-1];
 		b1 = a[1][a[0].size() - 1];
 		c1 = a[2][a[0].size()-1];
+		//std::cout << a1 << " " << b1 << " " << c1 << std::endl;
 		if(vertical){
 			x0 = -b1 / (2 * a1);
 			y0 = -(b1*b1 - 4 * a1 * c1) / (4 * a1); 
@@ -43,9 +54,16 @@ Parabola::Parabola(const Point & p1, const Point & p2, const Point & p3, bool ve
 			x0 = -(b1*b1 - 4 * a1 * c1) / (4 * a1); ;
 		}
 		this->p = 1/ (2 * a1);
+		if (fabs(this->p) < 0.0001) {
+			throw std::invalid_argument("\nWrong data\n");
+		}
+		std::cout << "p (focal parameter) = " << this->p << std::endl;
+		std::cout << "x0 = " << x0 << ", y0 = " << y0 << std::endl;
+		std::cout << "Parabola is " << (vertical ? "vertical" : "horizontal") << std::endl;
+		std::cout << std::endl;
 	}
 	catch (std::exception & e) {
-		std::cout << "Can't create parabola for this points";
+		std::cout << "Can't create " << (vertical ? "vertical" : "horizonal") << " parabola for this points\n\n";
 		throw e;
 	}
 }

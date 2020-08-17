@@ -21,6 +21,8 @@ public:
 	
 	bool isClosed() const;
 	
+	void showInfo() const;
+	
 	myEllipse(const Point & p1, const Point & p2, const Point & p3);
 };
 

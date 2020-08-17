@@ -18,8 +18,9 @@ public:
 
 	double getY(double t) const;
 
+	void showInfo() const;
 	
-	virtual bool isClosed() const;
+	bool isClosed() const;
 	
 	std::vector<Point> tangentVector(double t) const;
 };
