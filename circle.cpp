@@ -68,10 +68,10 @@ std::vector<Point> Circle::tangentVector(double t) const {
 	double y = getY(t);
 	double shift = 1;
 	Point p1(x, y);
-	Point p2(x + shift, -((x + shift - x0) * x + (-x0 * x - y0 * y + x0 * x0 + y0 * y0 - r * r))/ y0 + y);
-	if (fabs(p2.y - p1.y) < eps) {
-		p2.x -= shift;
-		p2.y += shift;
+	Point p2(x + shift, (-(cos(t)) * (x + shift) + r) / sin(t));
+	if (fabs(1 - fabs(cos(t)) < eps)){
+		p2.x = x;
+		p2.y = y + shift;
 	}
 	return std::vector<Point>({p1, p2});
 }

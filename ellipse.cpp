@@ -21,12 +21,14 @@ double myEllipse::getY(double t) const {
 std::vector<Point> myEllipse::tangentVector(double t) const {
 	const double eps = 0.0001;
 	double x = getX(t);
+	double y = getY(t);
 	double shift = 1;
-	Point p1(x, getY(t));
-	Point p2(x + shift, (-(b * cos(t) / a) * (x + shift) + r * b) / sin(t));
-	if (fabs(p2.y - p1.y) < eps) {
-		p2.x -= shift;
-		p2.y += shift;
+	
+	Point p1(x, y);
+	Point p2 (x + shift, (r - (x - x0 + shift)/a*cos(t))*b / sin(t) + y0);
+	if (fabs(1 - fabs(cos(t)) < eps)){
+		p2.x = x;
+		p2.y = y + shift;
 	}
 	return std::vector<Point>({p1, p2});
 }
@@ -60,6 +62,9 @@ myEllipse::myEllipse(const Point & p1, const Point & p2, const Point & p3){
 			if(!answer.thereAreNoFreeUnknown()){
 				throw std::invalid_argument("\nWrong data\n");
 			}
+			if(!((a[0][a[0].size() - 1] * a[1][a[0].size() - 1] > 0))){
+				throw std::invalid_argument("\nWrong data\n");
+			}
 			this->a = 1/sqrt(a[0][a[0].size() - 1]);
 			this->b = 1/sqrt(a[1][a[0].size() - 1]);
 			this->r = 1;
@@ -70,7 +75,6 @@ myEllipse::myEllipse(const Point & p1, const Point & p2, const Point & p3){
 		}
 		catch(std::exception & e) {
 			std::cout << "Can't create ellipse for this points\n\n";
-		}
 			throw e;
 		}
 	}
@@ -81,26 +85,12 @@ myEllipse::myEllipse(const Point & p1, const Point & p2, const Point & p3){
 			equation.push_back(std::vector<double>({1, p[i].x, p[i].y, p[i].x * p[i].x, p[i].y * p[i].y, 0}));
 		}
 		equation.push_back(std::vector<double> (6,0));
-		equation.push_back(std::vector<double> (6,0));
-		
-		/*for (int i = 0; i < equation.size(); i++){
-			for (int j = 0; j < equation[i].size(); j++){
-				std::cout << equation[i][j] << "\t";
-			}
-			std::cout << "\n";
-		}
-		std::cout << "\n\n";*/
+		equation.push_back(std::vector<double> (6,0));	
 		try {
 			const double eps = 0.0001;
 			Soleq soleq(equation);
 			Soleq::Answer answer = soleq.solve();
 			std::vector<std::vector<double>> & a = answer.general_solution;
-			/*for (int i = 0; i < a.size(); i++){
-				for (int j = 0; j < a[i].size(); j++){
-					std::cout << a[i][j] << "\t";
-				}
-				std::cout << "\n";
-			}*/
 			std::cout << "Enter variable a (from ellipse equation) : ";
 			std::cin >> this->a;
 			std::cout << "Enter variable b (from ellipse equation) : ";

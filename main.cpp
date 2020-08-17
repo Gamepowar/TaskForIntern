@@ -52,7 +52,13 @@ std::shared_ptr<T> saveMakeCurve(Args... args) {
 
 
 int main(int argc, char** argv) {
-
+	double x1, y1, x2, y2, x3, y3;
+	cout << "Enter three points (x1, y1, x2, y2, x3, y3):\n";
+ 	cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+ 	cin.clear();
+	Point p1(x1, y1); 
+	Point p2(x2, y2); 
+	Point p3(x3, y3);
 	std::shared_ptr<myEllipse> ellipsePtr = saveMakeCurve<myEllipse>(p1, p2, p3);
 	std::shared_ptr<Circle> circlePtr = saveMakeCurve<Circle>(p1, p2, p3);
  	std::shared_ptr<Parabola> parabolaPtr1 = saveMakeCurve<Parabola>(p1, p2, p3, true);
@@ -132,46 +138,5 @@ int main(int argc, char** argv) {
 			Menu::pause();
 		}
 	}
-	myEllipse c(p1, p2, p3);
- //	Circle (p1,p2,p3);
- 	//myEllipse ellipse1(p1,p2,p3);
- //	Parabola parabola(p1,p2,p3, false);
- 	//std::cout << "x0 = " << ellipse1.getX0() << ", y0 = " << ellipse1.getY0() << ", R = " << ellipse1.getR() << std::endl;
-       /*Â çàâèñèìîñòè îò çíà÷åíèé ó dx,dy ýëëèïñ áóäåò ìåíÿòü ôîðìó, ïîýêñïåðåìåíòèðóéòå*/
-    //int R = 1; //Ðàäèóñ îïðåäåëÿåò ðàçìåð
-    //int dx1=0, dy1=0, dx2=4, dy2=4;  //Åñëè dx2 == dy2, òî êðóã, èíà÷å ýëëèïñ
-    //int X = ellipse1.getX0(), Y = ellipse1.getY0(); //Íà÷àëüíûå êîîðäèíàòû
-  /*  Ellipse(dc, X+dx1, Y+dy1, X+dx2+R, Y+dy2+R);
-    brush = CreateSolidBrush(RGB(255,0,0));
-    for(double i = 0; i < 10; i+=0.1){
-        X = (int)ellipse1.getX(i);
-        Y = (int)ellipse1.getY(i);
-        SelectObject(dc,brush);
-	    Ellipse(dc, X+dx1, Y+dy1, X+dx2+R, Y+dy2+R);
-	}
-	X = p1.x;
-    Y = p1.y;
-         	 
-    brush = CreateSolidBrush(RGB(0,0,255));
-    SelectObject(dc,brush);
-    Ellipse(dc, X+dx1, Y+dy1, X+dx2+R, Y+dy2+R);
-    X = p2.x;
-    Y = p2.y;
-    Ellipse(dc, X+dx1, Y+dy1, X+dx2+R, Y+dy2+R);
-    X = p3.x;
-    Y = p3.y;
-    Ellipse(dc, X+dx1, Y+dy1, X+dx2+R, Y+dy2+R);
-    X = ellipse1.getX0();
-	Y = ellipse1.getY0();
-	brush = CreateSolidBrush(RGB(255,255,255));
-    SelectObject(dc,brush);
-	Ellipse(dc, X+dx1, Y+dy1, X+dx2+R, Y+dy2+R);
-		 
-    DeleteObject(brush);
-	ReleaseDC(hwnd, dc); //Îñâîáîæäàåì îáùèé èëè îêîííûé (íå âëèÿþùèé íà êëàññ èëè ëîêàëüíîñòü) êîíòåêñò óñòpîéñòâà, äåëàÿ åãî äîñòóïíûì äëÿ äpóãèõ ïpèêëàäíûõ çàäà÷.
- 
- 
-	std::cin.get();*/
-	
 }
 

@@ -83,8 +83,23 @@ bool Parabola::isClosed() const {
 }
 
 std::vector<Point> Parabola::tangentVector(double t) const {
-	double x = getX(t);
-	double y = getY(t);
-	return std::vector<Point>({Point(x, y), Point(x + 1, (x / p - x0 / p)*(x + 1) + x0 * x0*(2 * p))});
+	const double eps = 0.0001;
+	double x, y;	
+	x = getX(t);
+	y = getY(t);
+	double shift = 1;
+	Point p1(x, y);
+	Point p2;
+	if(vertical){
+		p2 = Point(x + shift, (2 * (x - x0) * (x + shift) + pow(x0, 2) - pow(x, 2)) / (2 * p)  + y0);
+	}
+	else{
+		p2 = Point(((2 * (y - y0) * (y + shift) + pow(y0, 2) - pow(y, 2)) / (2 * p)  + x0), y + shift );
+	}
+	if(fabs(fabs(x0) -fabs(x)) < eps && !vertical){
+		p2.x = x;
+		p2.y = y + shift;
+	}
+	return std::vector<Point>({p1, p2});
 }
 
