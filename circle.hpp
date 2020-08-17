@@ -47,6 +47,8 @@ public:
 	
 	double getR() const;
 	
+	void showInfo() const;
+	
 	bool isClosed() const;
 	
 	std::vector<Point> tangentVector(double t) const;
