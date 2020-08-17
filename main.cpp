@@ -1,5 +1,6 @@
 #include <iostream>
 #include <Windows.h>
+#include "circle.hpp"
 #include "ellipse.hpp"
 #include "parabola.hpp"
 int main(int argc, char** argv) {/*
@@ -18,14 +19,15 @@ int main(int argc, char** argv) {/*
 	p1.show();
 	p2.show();
 	p3.show();
+	myEllipse c(p1, p2, p3);
  //	Circle (p1,p2,p3);
- 	myEllipse ellipse1(p1,p2,p3);
+ 	//myEllipse ellipse1(p1,p2,p3);
  //	Parabola parabola(p1,p2,p3, false);
- 	std::cout << "x0 = " << ellipse1.getX0() << ", y0 = " << ellipse1.getY0() << ", R = " << ellipse1.getR() << std::endl;
+ 	//std::cout << "x0 = " << ellipse1.getX0() << ", y0 = " << ellipse1.getY0() << ", R = " << ellipse1.getR() << std::endl;
        /*В зависимости от значений у dx,dy эллипс будет менять форму, поэксперементируйте*/
-    int R = 1; //Радиус определяет размер
-    int dx1=0, dy1=0, dx2=4, dy2=4;  //Если dx2 == dy2, то круг, иначе эллипс
-    int X = ellipse1.getX0(), Y = ellipse1.getY0(); //Начальные координаты
+    //int R = 1; //Радиус определяет размер
+    //int dx1=0, dy1=0, dx2=4, dy2=4;  //Если dx2 == dy2, то круг, иначе эллипс
+    //int X = ellipse1.getX0(), Y = ellipse1.getY0(); //Начальные координаты
   /*  Ellipse(dc, X+dx1, Y+dy1, X+dx2+R, Y+dy2+R);
     brush = CreateSolidBrush(RGB(255,0,0));
     for(double i = 0; i < 10; i+=0.1){
