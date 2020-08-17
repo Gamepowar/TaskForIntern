@@ -44,7 +44,6 @@ Parabola::Parabola(const Point & p1, const Point & p2, const Point & p3, bool ve
 		a1 = a[0][a[0].size()-1];
 		b1 = a[1][a[0].size() - 1];
 		c1 = a[2][a[0].size()-1];
-		//std::cout << a1 << " " << b1 << " " << c1 << std::endl;
 		if(vertical){
 			x0 = -b1 / (2 * a1);
 			y0 = -(b1*b1 - 4 * a1 * c1) / (4 * a1); 

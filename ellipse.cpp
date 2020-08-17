@@ -37,10 +37,12 @@ myEllipse::myEllipse(const Point & p1, const Point & p2, const Point & p3){
 		setPoint(p1, p2, p3);
 	}
 	catch (std::exception & e) {
+
 		std::cout << "Can't create ellipse, since the points are collinear\n\n";
 		throw e;
 	}
 	std::cout << "Choose how you want to build the ellipse:\n1) Three points with center at point (0, 0);\n2) By three points with an offset (you will need to enter a, b parameters);\n";
+
 	int choice;
 	std::cin >> choice;
 	if(choice == 1){
@@ -51,12 +53,6 @@ myEllipse::myEllipse(const Point & p1, const Point & p2, const Point & p3){
 		for(int i = 0; i + 1< p.size(); i++){
 			equation.push_back(std::vector<double>({(p[i].x) * (p[i].x), (p[i].y) * (p[i].y), 1}));
 		}
-		/*for (int i = 0; i < equation.size(); i++){
-			for(int j = 0; j < equation[i].size(); j++){
-				std::cout << equation[i][j] << "\t";
-			}
-			std::cout << "\n";
-		}*/
 		Soleq soleq(equation);
 		try {
 			Soleq::Answer answer = soleq.solve();
@@ -67,12 +63,14 @@ myEllipse::myEllipse(const Point & p1, const Point & p2, const Point & p3){
 			this->a = 1/sqrt(a[0][a[0].size() - 1]);
 			this->b = 1/sqrt(a[1][a[0].size() - 1]);
 			this->r = 1;
+
 			std::cout << "r = " << r << std::endl;
 			std::cout << "a = " << this->a << ", b = " << this->b << std::endl;
 			std::cout << "x0 = " << x0 << ", y0 = " << y0 << std::endl;
 		}
 		catch(std::exception & e) {
 			std::cout << "Can't create ellipse for this points\n\n";
+		}
 			throw e;
 		}
 	}
@@ -126,6 +124,7 @@ myEllipse::myEllipse(const Point & p1, const Point & p2, const Point & p3){
 			x0 = - this->a * this->a * B / 2; 
 			y0 = - b * b * C / 2;
 			r = sqrt((x0 * x0) / (this->a * this->a) + (y0 * y0) / ( b * b) - A);		
+
 			std::cout << "r = " << r << std::endl;
 			std::cout << "a = " << this->a << ", b = " << this->b << std::endl;
 			std::cout << "x0 = " << x0 << ", y0 = " << y0 << std::endl;

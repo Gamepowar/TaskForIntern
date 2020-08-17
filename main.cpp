@@ -51,26 +51,7 @@ std::shared_ptr<T> saveMakeCurve(Args... args) {
 }
 
 
-int main(int argc, char** argv) {/*
-	Ellipse ellipse(Point(12, 4), Point(6, 3), Point(-3, 1));
-	return 0;*/
-	
-/*	
-	HWND hwnd = GetConsoleWindow(); //Берём ориентир на консольное окно (В нём будем рисовать)
-	HDC dc = GetDC(hwnd); //Цепляемся к консольному окну
-	RECT window = {}; //Переменная window будет использована для получения ширины и высоты окна
-	HBRUSH brush; //Переменная brush - это кисть, она будет использоваться для закрашивания
- 	*/
- 	double x1, y1, x2, y2, x3, y3;
-	cout << "Enter three points (x1, y1, x2, y2, x3, y3):\n";
- 	cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
- 	cin.clear();
-	Point p1(x1, y1); 
-	Point p2(x2, y2); 
-	Point p3(x3, y3);
-	p1.show();
-	p2.show();
-	p3.show();
+int main(int argc, char** argv) {
 
 	std::shared_ptr<myEllipse> ellipsePtr = saveMakeCurve<myEllipse>(p1, p2, p3);
 	std::shared_ptr<Circle> circlePtr = saveMakeCurve<Circle>(p1, p2, p3);
@@ -151,16 +132,15 @@ int main(int argc, char** argv) {/*
 			Menu::pause();
 		}
 	}
-	
- 	
+	myEllipse c(p1, p2, p3);
  //	Circle (p1,p2,p3);
  	//myEllipse ellipse1(p1,p2,p3);
  //	Parabola parabola(p1,p2,p3, false);
  	//std::cout << "x0 = " << ellipse1.getX0() << ", y0 = " << ellipse1.getY0() << ", R = " << ellipse1.getR() << std::endl;
-       /*В зависимости от значений у dx,dy эллипс будет менять форму, поэксперементируйте*/
-    //int R = 1; //Радиус определяет размер
-    //int dx1=0, dy1=0, dx2=4, dy2=4;  //Если dx2 == dy2, то круг, иначе эллипс
-    //int X = ellipse1.getX0(), Y = ellipse1.getY0(); //Начальные координаты
+       /*Г‚ Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГЁ Г®ГІ Г§Г­Г Г·ГҐГ­ГЁГ© Гі dx,dy ГЅГ«Г«ГЁГЇГ± ГЎГіГ¤ГҐГІ Г¬ГҐГ­ГїГІГј ГґГ®Г°Г¬Гі, ГЇГ®ГЅГЄГ±ГЇГҐГ°ГҐГ¬ГҐГ­ГІГЁГ°ГіГ©ГІГҐ*/
+    //int R = 1; //ГђГ Г¤ГЁГіГ± Г®ГЇГ°ГҐГ¤ГҐГ«ГїГҐГІ Г°Г Г§Г¬ГҐГ°
+    //int dx1=0, dy1=0, dx2=4, dy2=4;  //Г…Г±Г«ГЁ dx2 == dy2, ГІГ® ГЄГ°ГіГЈ, ГЁГ­Г Г·ГҐ ГЅГ«Г«ГЁГЇГ±
+    //int X = ellipse1.getX0(), Y = ellipse1.getY0(); //ГЌГ Г·Г Г«ГјГ­Г»ГҐ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ»
   /*  Ellipse(dc, X+dx1, Y+dy1, X+dx2+R, Y+dy2+R);
     brush = CreateSolidBrush(RGB(255,0,0));
     for(double i = 0; i < 10; i+=0.1){
@@ -188,7 +168,7 @@ int main(int argc, char** argv) {/*
 	Ellipse(dc, X+dx1, Y+dy1, X+dx2+R, Y+dy2+R);
 		 
     DeleteObject(brush);
-	ReleaseDC(hwnd, dc); //Освобождаем общий или оконный (не влияющий на класс или локальность) контекст устpойства, делая его доступным для дpугих пpикладных задач.
+	ReleaseDC(hwnd, dc); //ГЋГ±ГўГ®ГЎГ®Г¦Г¤Г ГҐГ¬ Г®ГЎГ№ГЁГ© ГЁГ«ГЁ Г®ГЄГ®Г­Г­Г»Г© (Г­ГҐ ГўГ«ГЁГїГѕГ№ГЁГ© Г­Г  ГЄГ«Г Г±Г± ГЁГ«ГЁ Г«Г®ГЄГ Г«ГјГ­Г®Г±ГІГј) ГЄГ®Г­ГІГҐГЄГ±ГІ ГіГ±ГІpГ®Г©Г±ГІГўГ , Г¤ГҐГ«Г Гї ГҐГЈГ® Г¤Г®Г±ГІГіГЇГ­Г»Г¬ Г¤Г«Гї Г¤pГіГЈГЁГµ ГЇpГЁГЄГ«Г Г¤Г­Г»Гµ Г§Г Г¤Г Г·.
  
  
 	std::cin.get();*/
